@@ -26,7 +26,6 @@ public class LC101 {
     }
 
 //    1、 递归方法
-    /**
     public boolean isMirror(TreeNode treeNode1, TreeNode treeNode2) {
         if(treeNode1 == null && treeNode2 == null) return true;
         if(treeNode1 == null || treeNode2 == null) return false;
@@ -34,8 +33,8 @@ public class LC101 {
                 && isMirror(treeNode1.left, treeNode2.right)
                 && isMirror(treeNode1.right, treeNode2.left);
         }
-     **/
 //    2、 迭代
+    /**
     public boolean isMirror(TreeNode root) {
         Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
@@ -52,4 +51,5 @@ public class LC101 {
             q.add(t2.left);
         }
     }
+     **/
 }
