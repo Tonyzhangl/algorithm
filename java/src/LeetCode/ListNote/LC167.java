@@ -12,6 +12,7 @@ import java.util.HashMap;
 
 public class LC167 {
 
+    /**
     public static int[] twoSum(int[] numbers, int target) {
         HashMap<Integer, Integer> hashMap = new HashMap<>();
         int[] list =new int[2];
@@ -35,6 +36,25 @@ public class LC167 {
         }
         return list;
     }
+     **/
+
+    public static int[] twoSum(int[] numbers, int target) {
+        int startIndex = 1, endIndex = numbers.length;
+        int[] result = new int[2];
+        while (startIndex < endIndex ) {
+            if(numbers[startIndex-1] + numbers[endIndex-1] < target) {
+                startIndex++;
+            }else if(numbers[startIndex-1] + numbers[endIndex-1] > target) {
+                endIndex--;
+            }else if(numbers[startIndex-1] + numbers[endIndex-1] == target) {
+                result[0] = startIndex;
+                result[1] = endIndex;
+                return result;
+            }
+        }
+        return result;
+    }
+
 
     public static void main(String[] args) {
         int[] tmp = new int[]{5,25,75};
