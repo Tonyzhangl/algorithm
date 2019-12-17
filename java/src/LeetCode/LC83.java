@@ -8,14 +8,14 @@ package LeetCode;
 */
 public class LC83 {
 
-//    public class ListNode {
-//        int val;
-//        ListNode next;
-//
-//        ListNode(int x) {
-//            val = x;
-//        }
-//    }
+    public class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
+    }
 
     public static ListNode deleteDuplicates(ListNode head) {
         ListNode current = head;
