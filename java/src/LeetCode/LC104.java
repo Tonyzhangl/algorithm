@@ -8,6 +8,7 @@ package LeetCode;
 * @Version:        1.0
 */
 public class LC104 {
+
     public class TreeNode {
        int val;
        TreeNode left;
@@ -15,6 +16,8 @@ public class LC104 {
        TreeNode(int x) { val = x; }
     }
 
+    /** ------ 递归解法 ----- **/
+    /**
     public int maxDepth(TreeNode treeNode) {
         if(treeNode == null) {
             return 0;
@@ -22,6 +25,23 @@ public class LC104 {
             int depLeft = maxDepth(treeNode.left);
             int depRight = maxDepth(treeNode.right);
             return Math.max(depLeft, depRight) + 1;
+        }
+    } **/
+
+    int max = 0, depth = 0;
+    /** ----- 迭代解法 ------ **/
+    public int maxDepth(TreeNode treeNode) {
+        depStack(treeNode);
+        return max;
+    }
+
+    private void depStack(TreeNode root) {
+        if(root != null) {
+            depth++;
+            max = Math.max(depth, max);
+            depStack(root.left);
+            depStack(root.right);
+            depth--;
         }
     }
 }
