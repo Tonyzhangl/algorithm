@@ -27,7 +27,7 @@ public class MovingAverage {
         if(queue.size() > size){
             sum -= queue.remove();
         }
-        return sum / size;
+        return sum / queue.size();
     }
 
 
