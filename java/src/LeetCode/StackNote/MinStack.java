@@ -9,6 +9,7 @@ package LeetCode.StackNote;
  * getMin() -- 检索栈中的最小元素。
  */
 
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 /**
@@ -20,16 +21,18 @@ import java.util.Stack;
 */
 class MinStack {
 
-    private Stack<Integer> stackRepo = new Stack<>();
-    private Stack<Integer> minStack = new Stack<>();
+    private Stack<Integer> stackRepo;
+    private Stack<Integer> minStack;
     /** initialize your data structure here. */
     public MinStack() {
-
+        stackRepo = new Stack<>();
+        minStack = new Stack<>();
     }
 
     public void push(int x) {
         stackRepo.push(x);
-        if(minStack.isEmpty() || x <= stackRepo.peek()) minStack.push(x);
+//        下面判断条件的 <= 中的 = 号一定不能少，请注意
+        if(minStack.isEmpty() || x <= minStack.peek()) minStack.push(x);
     }
 
     public void pop() {
@@ -44,6 +47,7 @@ class MinStack {
     public int getMin() {
         return minStack.peek();
     }
+
 }
 
 /**
