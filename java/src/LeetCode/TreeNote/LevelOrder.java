@@ -1,6 +1,7 @@
 package LeetCode.TreeNote;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -19,7 +20,13 @@ public class LevelOrder {
         TreeNode right;
     }
 
-    public List<List<Integer>> levelOrder(TreeNode root) {
+    /**方法一： 非递归(自实现）
+     * 采用 stack 记录每一层的情况，需要建立两层 stack，stack1 pop 之后就无法保留原层次的情况，所以需要 stack2 来保证。
+     *
+     * @param root
+     * @return
+     */
+    public List<List<Integer>> levelOrderByStack(TreeNode root) {
         List<List<Integer>> ans = new ArrayList<List<Integer>>();
         List<Integer> itemList = new ArrayList<>();
         TreeNode last = root;
@@ -53,5 +60,33 @@ public class LevelOrder {
                 stack1.push(node.left);
             }
         }
+    }
+
+    /**方法二：非递归（借鉴）
+     * 通过 LinkedList 来记录每一层的记录情况
+     * @param root
+     * @return
+     */
+    public List<List<Integer>> levelOrderByLinkedList(TreeNode root) {
+        List<List<Integer>> ans = new ArrayList<>();
+        LinkedList<TreeNode> linkedList = new LinkedList<>();
+        if(root == null) return ans;
+        linkedList.add(root);
+        while (!linkedList.isEmpty()) {
+            List<Integer> list = new ArrayList<>();
+            int size = linkedList.size();
+            while(size-- > 0) {
+                TreeNode node = linkedList.removeFirst();
+                list.add(node.val);
+                if(node.left != null) {
+                    linkedList.add(node.left);
+                }
+                if(node.right != null) {
+                    linkedList.add(node.right);
+                }
+            }
+            ans.add(list);
+        }
+        return ans;
     }
 }
