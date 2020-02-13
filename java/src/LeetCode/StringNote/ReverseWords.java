@@ -10,13 +10,15 @@ package LeetCode.StringNote;
 public class ReverseWords {
 
     public String reverseWords(String s) {
-        String[] strs = s.split(" ");
+        String[] strs = s.trim().split(" ");
         int len = strs.length;
         StringBuilder stringBuilder = new StringBuilder();
-        for(int i=0;i<len;i++) {
-            StringBuffer stringBuffer = new StringBuffer(strs[i]);
-            String tmp = i== len-1 ? stringBuffer.reverse().toString() : stringBuffer.reverse().toString() + " ";
-            stringBuilder.append(tmp);
+        for(int i=len-1;i>=0;i--) {
+            if(!strs[i].equals("")){
+                StringBuffer stringBuffer = new StringBuffer(strs[i]);
+                String tmp = i== 0? stringBuffer.toString(): stringBuffer.toString() + " ";
+                stringBuilder.append(tmp);
+            }
         }
         return stringBuilder.toString();
     }
