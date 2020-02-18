@@ -1,4 +1,4 @@
-package LeetCode.BCNote;
+package LeetCode.BitOpNote;
 
 /**
 * @Description:    颠倒二进制位,https://leetcode-cn.com/problems/reverse-bits/
