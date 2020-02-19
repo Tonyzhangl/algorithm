@@ -9,6 +9,7 @@ package LeetCode.StringNote;
 */
 public class IsSubsequence {
 
+    // 自实现
     public boolean isSubsequence(String s, String t){
         int si=0,ti=0;
         boolean bt = false;
@@ -27,5 +28,18 @@ public class IsSubsequence {
             }
         }
         return bt;
+    }
+
+    // 借鉴优秀题解
+    public boolean isSubsequence1(String s,String t){
+        char[] str = s.toCharArray();
+        int j=-1;
+        for(int i=0;i<str.length;i++){
+            j = t.indexOf(str[i], j+1);
+            if(j==-1){
+                return false;
+            }
+        }
+        return true;
     }
 }
